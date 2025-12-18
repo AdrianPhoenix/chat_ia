@@ -36,6 +36,8 @@ chat-ia-masterclass/
 
 ## 📦 Paso 2: Configurar package.json
 
+**📄 Archivo: `package.json`**
+
 ```json
 {
   "name": "chat-ia-masterclass",
@@ -76,6 +78,8 @@ npm install
 
 ## 🌍 Paso 4: Variables de Entorno (.env)
 
+**📄 Archivo: `.env`**
+
 ```env
 COHERE_API_KEY=tu-api-key-aqui
 PORT=3000
@@ -86,6 +90,8 @@ PORT=3000
 ---
 
 ## 🖥️ Paso 5: Servidor Backend (server.js)
+
+**📄 Archivo: `server.js`**
 
 ```javascript
 const express = require('express');
@@ -143,6 +149,8 @@ app.listen(PORT, () => {
 ---
 
 ## 🎨 Paso 6: Frontend HTML (public/index.html)
+
+**📄 Archivo: `public/index.html`**
 
 ```html
 <!DOCTYPE html>
@@ -217,6 +225,8 @@ app.listen(PORT, () => {
 ---
 
 ## ⚡ Paso 7: JavaScript Frontend (public/script.js)
+
+**📄 Archivo: `public/script.js`**
 
 ```javascript
 const chatContainer = document.getElementById('chatContainer');
