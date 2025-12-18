@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat IA Avanzado</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.0.5/dist/purify.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    animation: {
+                        'pulse-slow': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .markdown-content h1 { @apply text-xl font-bold mb-2 text-gray-900; }
+        .markdown-content h2 { @apply text-lg font-bold mb-2 text-gray-800; }
+        .markdown-content h3 { @apply text-base font-bold mb-1 text-gray-700; }
+        .markdown-content p { @apply mb-2 leading-relaxed; }
+        .markdown-content ul { @apply list-disc list-inside mb-2 space-y-1; }
+        .markdown-content ol { @apply list-decimal list-inside mb-2 space-y-1; }
+        .markdown-content li { @apply ml-2; }
+        .markdown-content code { @apply bg-gray-200 px-1 py-0.5 rounded text-sm font-mono; }
+        .markdown-content pre { @apply bg-gray-800 text-green-400 p-3 rounded-lg mb-2 overflow-x-auto; }
+        .markdown-content pre code { @apply bg-transparent px-0 py-0; }
+        .markdown-content blockquote { @apply border-l-4 border-blue-500 pl-4 italic text-gray-600 mb-2; }
+        .markdown-content strong { @apply font-bold; }
+        .markdown-content em { @apply italic; }
+        .markdown-content hr { @apply border-gray-300 my-3; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+    <div class="container mx-auto max-w-4xl p-4">
+        <!-- Header -->
+        <div class="bg-white rounded-t-2xl shadow-lg p-6 border-b">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                    <span class="text-white font-bold">🤖</span>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-800">Chat IA Avanzado</h1>
+                    <p class="text-gray-500 text-sm">Powered by Cohere</p>
+                </div>
+                <div class="ml-auto">
+                    <div id="status" class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse-slow"></div>
+                        <span class="text-sm text-gray-600">En línea</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chat Container -->
+        <div id="chatContainer" class="bg-white h-96 overflow-y-auto p-6 space-y-4">
+            <div class="flex items-start space-x-3">
+                <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="text-white text-sm">🤖</span>
+                </div>
+                <div class="bg-gray-100 rounded-2xl rounded-tl-sm p-4 max-w-xs lg:max-w-md">
+                    <p class="text-gray-800">¡Hola! Soy tu asistente de IA. ¿En qué puedo ayudarte hoy?</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="bg-white rounded-b-2xl shadow-lg p-6">
+            <div class="flex space-x-4">
+                <input 
+                    type="text" 
+                    id="messageInput" 
+                    placeholder="Escribe tu mensaje aquí..." 
+                    class="flex-1 border border-gray-300 rounded-full px-6 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    autofocus
+                >
+                <button 
+                    id="sendButton" 
+                    class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-3 rounded-full hover:from-blue-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-200 font-medium"
+                >
+                    Enviar
+                </button>
+            </div>
+            <div class="mt-3 flex items-center justify-between text-sm text-gray-500">
+                <span>Presiona Enter para enviar</span>
+                <span id="typing" class="hidden">IA está escribiendo...</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
